@@ -14,4 +14,6 @@ Gem::Specification.new do |s|
   s.description = "Device42 DHCP provider plugin for Foreman's smart proxy"
 
   s.files       = Dir['{config,lib,bundler.d}/**/*'] + ['README.md', 'LICENSE']
+  s.add_runtime_dependency('httparty', '0.0.7')
+  s.add_runtime_dependency('json', '1.8.3')
 end
