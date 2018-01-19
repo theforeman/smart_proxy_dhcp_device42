@@ -15,5 +15,4 @@ Gem::Specification.new do |s|
 
   s.files       = Dir['{config,lib,bundler.d}/**/*'] + ['README.md', 'LICENSE']
   s.add_runtime_dependency('httparty', '0.15.6')
-  s.add_runtime_dependency('json', '1.8.3')
 end
