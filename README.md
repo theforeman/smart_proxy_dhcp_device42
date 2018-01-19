@@ -7,7 +7,7 @@ This plugin adds a new DHCP provider for managing records with device42 servers
 See [How_to_Install_a_Smart-Proxy_Plugin](http://projects.theforeman.org/projects/foreman/wiki/How_to_Install_a_Smart-Proxy_Plugin)
 for how to install Smart Proxy plugins
 
-This plugin is compatible with Smart Proxy 1.13 or higher.
+This plugin is compatible with Smart Proxy 1.16 or higher.
 
 When installing using "gem", make sure to install the bundle file:
 
