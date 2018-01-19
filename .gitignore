@@ -1,0 +1,12 @@
+.idea
+*.gem
+pkg/
+logs
+Gemfile.lock
+.rbenv*
+.rvmrc*
+.ruby-*
+tags
+.bundle/
+vendor/
+config/*.yml
