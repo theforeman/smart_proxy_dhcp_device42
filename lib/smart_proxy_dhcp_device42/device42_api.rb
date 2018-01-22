@@ -5,10 +5,11 @@ require "csv"
 
 class Device42
 
-    attr_reader :host, :scheme, :username, :password
-    def initialize(host, scheme, username, password)
+    attr_reader :host, :scheme, :verify, :username, :password
+    def initialize(host, scheme, verify, username, password)
       @host = host
       @scheme = scheme
+      @verify = verify
       @username = username
       @password = password
     end
@@ -27,7 +28,7 @@ class Device42
                                   'charset' => 'utf-8'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
-                                :verify => false
+                                :verify => @verify
                            })
       return response.body
     end
@@ -40,7 +41,7 @@ class Device42
                                   'charset' => 'utf-8'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
-                                :verify => false
+                                :verify => @verify
                               })
       return response.body
     end
@@ -48,7 +49,7 @@ class Device42
     def rest_delete(endpoint, id)
       response = HTTParty.delete("%s://%s/api/1.0/%s/%s/" % [@scheme, @host, endpoint, id], {
                                 :basic_auth => { :username => @username, :password => @password },
-                                :verify => false
+                                :verify => @verify
                               })
       return response.body
     end
@@ -64,7 +65,7 @@ class Device42
                                   'charset' => 'utf-8'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
-                                :verify => false
+                                :verify => @verify
                               })
       return response.body
     end

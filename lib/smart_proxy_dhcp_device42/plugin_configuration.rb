@@ -13,6 +13,7 @@ module Proxy::DHCP::Device42
                                   Device42.new(
                                     settings[:server],
                                     settings[:scheme],
+                                    settings[:verify],
                                     settings[:username],
                                     settings[:password])
                                   end)

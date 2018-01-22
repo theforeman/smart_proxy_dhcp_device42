@@ -7,7 +7,7 @@ require 'smart_proxy_dhcp_device42/device42_api'
 
 class Device42ApiTest < Test::Unit::TestCase
   def setup
-    @connection = Device42.new('10.10.10.10', 'https', 'admin', 'admin')
+    @connection = Device42.new('10.10.10.10', 'https', false, 'admin', 'admin')
     @csv_string_subnet = "network,mask_bits,subnet_pk\n10.75.1.0,24,1\n"
     @array_subnet = [
       {"mask_bits"=>"24", "network"=>"10.75.1.0", "subnet_pk"=>"1"}

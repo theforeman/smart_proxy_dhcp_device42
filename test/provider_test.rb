@@ -6,7 +6,7 @@ require 'smart_proxy_dhcp_device42/dhcp_device42_main'
 
 class Device42ProviderTest < Test::Unit::TestCase
   def setup
-    @connection = Device42.new('127.0.0.1', 'https',
+    @connection = Device42.new('127.0.0.1', 'https', true,
                                'user', 'password')
     @managed_subnets = nil
 

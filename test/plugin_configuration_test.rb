@@ -9,7 +9,7 @@ class Device42DhcpProductionWiringTest < Test::Unit::TestCase
   def setup
     @settings = {:username => 'user', :password => 'password', 
                  :server => '127.0.0.1', :scheme => 'https', 
-                 :subnets => ['1.1.1.0/255.255.255.0']}
+                 :verify => true, :subnets => ['1.1.1.0/255.255.255.0']}
     @container = ::Proxy::DependencyInjection::Container.new
     Proxy::DHCP::Device42::PluginConfiguration.new.load_dependency_injection_wirings(@container, @settings)
   end
@@ -20,6 +20,7 @@ class Device42DhcpProductionWiringTest < Test::Unit::TestCase
     assert_equal 'user', connection.username
     assert_equal 'password', connection.password
     assert_equal 'https', connection.scheme
+    assert_equal true, connection.verify
   end
 
   def test_provider

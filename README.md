@@ -18,6 +18,8 @@ When installing using "gem", make sure to install the bundle file:
 To enable this DHCP provider, edit `/etc/foreman-proxy/settings.d/dhcp.yml` and set:
 
     :use_provider: dhcp_device42
+    :scheme: server scheme
+    :verify: secure verification ( bool )
     :server: IP of device42 server
     :subnets: subnets you want to use (optional unless you set device42_subnets to false)
 
