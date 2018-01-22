@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = 'smart_proxy_dhcp_device42'
   s.version     = Proxy::DHCP::Device42::VERSION
   s.date        = Date.today.to_s
-  s.license     = 'APACHE-2'
+  s.license     = 'GPL-3.0'
   s.authors     = ['Anatolii Chmykhalo']
   s.email       = ['anatolii.chmykhalo@device42.com']
   s.homepage    = 'https://www.device42.com'
