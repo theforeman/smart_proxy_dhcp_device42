@@ -24,8 +24,7 @@ class Device42
     def rest_get(endpoint, querystring)
       response = HTTParty.get("%s://%s/api/1.0/%s/%s" % [@scheme, @host, endpoint, querystring], {
                                 :headers => {
-                                  'Content-Type' => 'application/x-www-form-urlencoded',
-                                  'charset' => 'utf-8'
+                                  'accept' => 'applicaton/json'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
@@ -35,10 +34,10 @@ class Device42
 
     def rest_post(endpoint, body)
       response = HTTParty.post("%s://%s/api/1.0/%s/" % [@scheme, @host, endpoint], {
-                                :body => body,
+                                :json => body,
                                 :headers => {
                                   'Content-Type' => 'application/x-www-form-urlencoded',
-                                  'charset' => 'utf-8'
+                                  'accept' => 'applicaton/json'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
@@ -61,8 +60,7 @@ class Device42
                                   :query => query
                                 },
                                 :headers => {
-                                  'Content-Type' => 'application/x-www-form-urlencoded',
-                                  'charset' => 'utf-8'
+                                  'Content-Type' => 'application/x-www-form-urlencoded'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
@@ -91,6 +89,16 @@ class Device42
       response = JSON.parse(rest_post('devices', device))
       device_id = response['msg'][1]
       rest_delete('devices', device_id)
+    end
+
+    def get_hosts(network_address)
+      csv = doql("SELECT d.name, i.ip_address, n.hwaddress, s.network, s.mask_bits FROM view_subnet_v1 s
+                  JOIN view_ipaddress_v1 i ON i.subnet_fk = s.subnet_pk
+                  JOIN view_device_v1 d ON d.device_pk = i.device_fk
+                  JOIN view_netport_v1 n ON n.netport_pk = i.netport_fk
+                  WHERE s.network in ('%s')
+                  AND i.available = False" % network_address)
+      return csv_to_array(csv)
     end
 
     def get_hosts_by_ip(ip)

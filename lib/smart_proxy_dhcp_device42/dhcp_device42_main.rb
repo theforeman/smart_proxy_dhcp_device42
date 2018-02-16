@@ -46,6 +46,21 @@ module Proxy::DHCP::Device42
       difined_subnets
     end
 
+    def all_hosts(network_address)
+      records = @connection.get_hosts(network_address)
+      return [] if records.empty?
+      reservs = []
+      records.each do |record|
+        reserv = build_reservation(record)
+        reservs.push(reserv) if !reserv.nil?
+      end
+      reservs
+    end
+
+    def all_leases(network_address)
+      [] # device42 doesn't support leases
+    end
+
     def unused_ip(subnet, _, from_ip_address, to_ip_address)
       @connection.get_next_ip(subnet, from_ip_address, to_ip_address)
     end
