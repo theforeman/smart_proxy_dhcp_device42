@@ -23,9 +23,6 @@ class Device42
 
     def rest_get(endpoint, querystring)
       response = HTTParty.get("%s://%s/api/1.0/%s/%s" % [@scheme, @host, endpoint, querystring], {
-                                :headers => {
-                                  'accept' => 'applicaton/json'
-                                },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
                            })
@@ -37,7 +34,6 @@ class Device42
                                 :json => body,
                                 :headers => {
                                   'Content-Type' => 'application/x-www-form-urlencoded',
-                                  'accept' => 'applicaton/json'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
