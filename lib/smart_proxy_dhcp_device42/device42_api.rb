@@ -31,9 +31,9 @@ class Device42
 
     def rest_post(endpoint, body)
       response = HTTParty.post("%s://%s/api/1.0/%s/" % [@scheme, @host, endpoint], {
-                                :json => body,
+                                :body => body,
                                 :headers => {
-                                  'Content-Type' => 'application/x-www-form-urlencoded',
+                                  'Content-Type' => 'application/x-www-form-urlencoded'
                                 },
                                 :basic_auth => { :username => @username, :password => @password },
                                 :verify => @verify
