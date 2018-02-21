@@ -79,7 +79,7 @@ class Device42
     end
 
     def remove_host(hostname)
-      response = JSON.parse(rest_post('devices/name', hostname))
+      response = JSON.parse(rest_get('devices/name', hostname))
       device_id = response['id']
       rest_delete('devices', device_id)
     end
