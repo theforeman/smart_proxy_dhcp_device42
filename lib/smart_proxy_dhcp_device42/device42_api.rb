@@ -82,12 +82,9 @@ class Device42
       rest_post('ips', ip)
     end
 
-    def remove_host(name)
-      device = {
-        :name => name
-      }
-      response = JSON.parse(rest_post('devices', device))
-      device_id = response['msg'][1]
+    def remove_host(hostname)
+      response = JSON.parse(rest_post('devices/name', hostname))
+      device_id = response['id']
       rest_delete('devices', device_id)
     end
 
