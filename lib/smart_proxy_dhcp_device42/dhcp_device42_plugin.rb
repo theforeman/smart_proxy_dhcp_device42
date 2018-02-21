@@ -10,8 +10,7 @@ module Proxy::DHCP::Device42
     load_dependency_injection_wirings ::Proxy::DHCP::Device42::PluginConfiguration
     override_module_loader_class ::Proxy::DHCP::Device42::ModuleLoader
 
-    load_validators :scheme_validator => ::Proxy::DHCP::Device42::SchemeValidator
-    load_validators :verify_validator => ::Proxy::DHCP::Device42::VerifyValidator
+    load_validators :scheme_validator => ::Proxy::DHCP::Device42::SchemeValidator, :verify_validator => ::Proxy::DHCP::Device42::VerifyValidator
 
     validate :scheme, :scheme_validator => true
     validate :verify, :verify_validator => true
