@@ -1,0 +1,9 @@
+---
+#
+# Configuration file for 'dhcp_device42' dhcp provider
+#
+:scheme: http
+:verify: false
+:server: 192.168.0.2
+:username: "username"
+:password: "password"
